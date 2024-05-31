@@ -1,0 +1,40 @@
+.MidLeft{
+  width: 12%;
+  height: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #FF6666;
+}
+
+.MidRight{
+  width: 88%;
+  padding-right: 12%;
+}
+
+.Title{
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.Description {
+  color: #3D3D3D;
+  margin-bottom: 65px;
+}
+
+.Input {
+  width: 100%;
+  border: none;;
+  border-bottom: 1px solid #FF6666;
+  outline: none;
+  transition: border 0.5s ease;
+  font-size: 24px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.Input:focus{
+  border: none;
+  border-bottom: 2px solid #FF6666;
+}

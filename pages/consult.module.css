@@ -1,0 +1,80 @@
+.ConsultContainer {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  margin: auto;
+  background-color: black;
+}
+
+.Consult{
+  width: 720px;
+  height: 100vh;
+  margin: auto;
+  background-color: white;
+}
+
+.Top{
+
+}
+
+.Mid{}
+.Bottom{}
+
+/* 모바일 스타일 - 화면 너비가 768px 이하일 때 적용 */
+@media (max-width: 768px) {
+  .ConsultContainer {
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  .Consult{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .Top{
+    width: 100%;
+    height: 6px;
+    background-color: #FF6666;
+  }
+  
+  .Mid{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .Bottom{
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .ButtonLeft{
+    width: 13%;
+    height: 50px;
+    background-color: #FF6666;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+  .ButtonRight{
+    width: 80%;
+    height: 50px;
+    background-color: #FF6666;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+  }
+}
