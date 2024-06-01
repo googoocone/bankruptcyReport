@@ -23,6 +23,26 @@
   margin-bottom: 65px;
 }
 
+.FlexBox{
+  display: flex;
+  position: relative;
+}
+
+.MulFlexBox{
+  display: flex;
+  flex-direction: column;
+}
+
+.MulButton{
+  width: 170px;
+  height: 40px;
+  border: 1px solid #FF6666;
+  color: #FF6666;
+  background-color: white;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
 .Input {
   width: 100%;
   border: none;;
@@ -32,6 +52,17 @@
   font-size: 24px;
   padding-left: 5px;
   padding-bottom: 5px;
+  padding-right: 50px;
+}
+
+.InputOverlay {
+  position: absolute;
+  right: 10px; /* adjust as needed */
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #999; /* or any color you prefer */
+  color: #FF6666;
 }
 
 .Input:focus{

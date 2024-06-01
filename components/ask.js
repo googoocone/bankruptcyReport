@@ -3,33 +3,82 @@ import { useState } from "react";
 import React from "react";
 import Style from "./ask.module.css";
 
-const Ask = ({ type, textType, title, askNum, description }) => {
-  const [isFocused, SetIsFocused] = useState(false);
+const Ask = ({ index, type, textType, title, choiceOption, description }) => {
+  const [inputValue, setInputValue] = useState("");
+  console.log("hello", choiceOption);
 
-  const handleFocus = () => SetIsFocused(true);
-  const handleBlur = () => SetIsFocused(false);
-
-  function onHandleNum() {
-    console.log("hi");
+  function handleInput(event) {
+    const value = event.target.value.replace(/[^0-9]/g, ""); // 숫자 이외의 값 제거
+    setInputValue(value);
   }
+
+  const formatNumber = (num) => {
+    if (!num) return "";
+    const units = ["", "만", "억", "조", "경"];
+    let result = "";
+    let unitIndex = 0;
+
+    while (num > 0) {
+      const part = num % 10000;
+      if (part > 0) {
+        result =
+          part.toLocaleString() +
+          units[unitIndex] +
+          (result ? " " + result : "");
+      }
+      num = Math.floor(num / 10000);
+      unitIndex++;
+    }
+
+    return result.trim();
+  };
+  const formattedValue = formatNumber(parseInt(inputValue, 10));
 
   const subTypeAsk = (
     <>
-      <div className={Style.MidLeft}>4.</div>
+      <div className={Style.MidLeft}>{index}.</div>
       <div className={Style.MidRight}>
-        <div className={Style.Title}>현재 월 소득</div>
-        <div className={Style.Description}>
-          현재 소득활동을 하고 계신가요? 아르바이트, 일용직, 보험설계사 등
-          수입이 발생하면 모두 소득활동을 하고 있다고 볼 수 있습니다.
+        <div className={Style.Title}>{title}</div>
+        <div className={Style.Description}>{description}</div>
+        <div className={Style.FlexBox}>
+          <input
+            className={Style.Input}
+            type={textType}
+            onChange={handleInput}
+          ></input>
+          {textType === "number" && (
+            <div className={Style.InputOverlay}>
+              {formattedValue ? formattedValue + "원" : "만원"}
+            </div>
+          )}
         </div>
-        <input className={Style.Input}></input>
       </div>
     </>
   );
 
-  const mulTypeAsk = <div>mul</div>;
+  const mulTypeAsk = (
+    <>
+      <div className={Style.MidLeft}>{index}.</div>
+      <div className={Style.MidRight}>
+        <div className={Style.Title}>{title}</div>
+        <div className={Style.Description}>{description}</div>
+        <div className={Style.MulFlexBox}>
+          {choiceOption.map((option) => {
+            console.log('option', option)
+            return (
+                <button key={Math.random()} className={Style.MulButton}>{Object.values(option)}</button>
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
 
-  return subTypeAsk
+  if (type === "sub") {
+    return subTypeAsk;
+  } else {
+    return mulTypeAsk;
+  }
 };
 
 export default Ask;

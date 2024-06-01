@@ -2,23 +2,13 @@
 import React from "react";
 import Ask from "../components/ask";
 import Style from "./consult.module.css";
-import Slider from "react-slick";
 import { useState } from "react";
 
 import { ASK_FORMAT } from "../src/ask-format";
 
 const Consult = () => {
-  const settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-  };
-
   const sliderRef = React.createRef();
-  
+
   const [pageIndex, setPageIndex] = useState(0);
 
   const handlePrevious = () => {
@@ -33,13 +23,14 @@ const Consult = () => {
       <div className={Style.Consult}>
         <div className={Style.Top}></div>
         <div className={Style.Mid}>
-        {/* <Slider ref={sliderRef} {...settings}>
-            {ASK_FORMAT.map((ask, index) => (
-              <div key={index} className={Style.Page}>
-                <Ask data={ask} />
-              </div>
-            ))}
-          </Slider> */}
+          <Ask
+            index = {pageIndex}
+            type={ASK_FORMAT[pageIndex].type}
+            textType={ASK_FORMAT[pageIndex].textType}
+            title={ASK_FORMAT[pageIndex].title}
+            choiceOption={ASK_FORMAT[pageIndex].choiceOption}
+            description={ASK_FORMAT[pageIndex].description}
+          ></Ask>
         </div>
         <div className={Style.Bottom}>
           <button onClick={handlePrevious} className={Style.ButtonLeft}>
